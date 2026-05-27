@@ -1,0 +1,72 @@
+<style>
+  .hub-container { max-width: 750px; margin: 20px auto; font-family: sans-serif; }
+  .hub-table { width: 100%; border-collapse: collapse; font-size: 14px; background: #fff; }
+  .hub-table th { background: #f8f9fa; padding: 12px; text-align: left; font-size: 11px; text-transform: none; border-bottom: 2px solid #ddd; color: #666; }
+  .hub-table td { padding: 15px 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
+
+  /* Shared Properties for both Badges and Buttons */
+  .status-badge, .btn-start {
+    display: inline-block;
+    width: 110px;           /* Forces identical width */
+    padding: 8px 0;         /* Identical vertical padding */
+    text-align: center;     /* Centers text inside the bubble */
+    border-radius: 20px;    /* Makes them rounded "pills" */
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;  /* Removes underline from links */
+    line-height: 1;         /* Ensures text sits perfectly in the middle */
+  }
+
+  /* Status Badge Colors */
+  .status-badge { background-color: #e0e0e0; color: #666; }
+  .badge-complete { background-color: #28a745 !important; color: white !important; }
+  .badge-progress { background-color: #ffc107 !important; color: #333 !important; }
+  .badge-notstarted { background-color: #6c757d !important; color: white !important; }
+
+  /* Action Button Styling */
+  .btn-start {
+    background-color: #007ac0;
+    color: white !important;
+    cursor: pointer;
+    transition: background 0.2s;
+    border: none;
+  }
+
+  .btn-start:hover {
+    background-color: #005a8e;
+  }
+</style>
+<div class="hub-container">
+<table class="hub-table">
+	<thead>
+		<tr>
+			<th>Study Batch</th>
+			<th>Status</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><strong>Batch A</strong></td>
+			<td><span class="status-badge">${e://Field/BatchA_status}</span></td>
+			<td><a class="btn-start" href="URL_A">Start</a></td>
+		</tr>
+		<tr>
+			<td><strong>Batch B</strong></td>
+			<td><span class="status-badge">${e://Field/BatchB_status}</span></td>
+			<td><a class="btn-start" href="URL_B">Start</a></td>
+		</tr>
+		<tr>
+			<td><strong>Batch C</strong></td>
+			<td><span class="status-badge">${e://Field/BatchC_status}</span></td>
+			<td><a class="btn-start" href="URL_C">Start</a></td>
+		</tr>
+		<tr>
+			<td><strong>Batch D</strong></td>
+			<td><span class="status-badge">${e://Field/BatchD_status}</span></td>
+			<td><a class="btn-start" href="URL_D">Start</a></td>
+		</tr>
+	</tbody>
+</table>
+</div>
