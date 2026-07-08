@@ -1,0 +1,133 @@
+<style>
+  /* Base Desktop Completion Card Setup */
+  .completion-card {
+    background: #ffffff;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(20, 16, 28, 0.05), 0 1px 3px rgba(0,0,0,0.02);
+    border-top: 6px solid #4F2683; /* Western Purple Top Anchor */
+    text-align: center;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+  }
+
+  /* Animated Success Seal Icon Container */
+  .success-seal {
+    width: 70px;
+    height: 70px;
+    background: rgba(143, 85, 224, 0.1); /* Very soft Orchid fill */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 24px auto;
+    color: #8F55E0; /* Western Orchid */
+    font-size: 32px;
+    animation: popSeal 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  @keyframes popSeal {
+    0% { transform: scale(0.4); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  .completion-title {
+    color: #4F2683;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: -0.4px;
+  }
+
+  .completion-desc {
+    color: #555555;
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 25px auto;
+  }
+
+  /* Cloud Syncing Sync Status Strip */
+  .sync-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f4f1f8;
+    color: #6a5385;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .sync-dot {
+    width: 6px;
+    height: 6px;
+    background: #2ecc71; /* High-contrast emerald green pulse */
+    border-radius: 50%;
+    animation: pulseDot 1.5s infinite ease-in-out;
+  }
+
+  @keyframes pulseDot {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+
+  /* ==========================================================================
+     QUALTRICS NATIVE NEXT BUTTON UPGRADE (Transforms default styling)
+     ========================================================================== */
+  #Buttons #NextButton,
+  .Skin #Buttons #NextButton {
+    background-color: #4F2683 !important;
+    color: #ffffff !important;
+    font-family: 'Helvetica Neue', Arial, sans-serif !important;
+    font-size: 16px !important;
+    font-weight: bold !important;
+    padding: 12px 32px !important;
+    border-radius: 6px !important;
+    border: none !important;
+    box-shadow: 0 4px 10px rgba(79, 38, 131, 0.2) !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    float: none !important;
+    margin: 10px auto 0 auto !important;
+    display: block !important;
+  }
+
+  #Buttons #NextButton:hover,
+  .Skin #Buttons #NextButton:hover {
+    background-color: #3A1B60 !important;
+    box-shadow: 0 6px 14px rgba(79, 38, 131, 0.3) !important;
+    transform: translateY(-1px) !important;
+  }
+
+  /* Hide the rest of the standard footer line rules to keep the viewport clean */
+  .Skin .Separator, #Buttons {
+    border: none !important;
+  }
+
+  /* Mobile Tweaks */
+  @media (max-width: 600px) {
+    .completion-card {
+      margin: 20px 15px;
+      padding: 30px 20px;
+    }
+    .completion-title { font-size: 20px; }
+    .completion-desc { font-size: 14px; }
+  }
+</style>
+
+<div class="completion-card">
+  <div class="success-seal">✓</div>
+
+  <div id="completed-title" class="completion-title">Module Complete!</div>
+  <div id="completed-desc" class="completion-desc">Nice job! Your scores have been calculated successfully.</div>
+
+  <div class="sync-badge">
+    <div class="sync-dot"></div>
+    <span>Securely syncing your progress ...</span>
+  </div>
+</div>

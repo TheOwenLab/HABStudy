@@ -1,0 +1,64 @@
+<style type="text/css">/* Force Qualtrics to stop slicing off elements pushing past containers */
+  .Skin .QuestionOuter,
+  .Skin .QuestionBody,
+  .Skin .QuestionText {
+    overflow: visible !important;
+  }
+
+  /* Strip padding from all question blocks on this page */
+  .Skin .QuestionOuter {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .Skin .Separator {
+    display: none !important;
+  }
+
+  .results-container {
+    text-align: center;
+    margin-top: -15px !important;
+    margin-bottom: 25px !important;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  /* Active Button State */
+  .results-btn {
+    display: inline-block;
+    background-color: #4F2683; /* Western Purple */
+    color: #ffffff !important;
+    padding: 12px 24px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 5px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .results-btn:hover {
+    background-color: #3A1B60;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-1px);
+  }
+
+  .results-btn:active {
+    transform: translateY(1px);
+  }
+
+  /* 1. NEW DISABLED STATE RULES */
+  .results-btn.disabled {
+    background-color: #baadb5 !important; /* Muted grey-purple */
+    color: #7a7377 !important;           /* Darker text for visibility */
+    opacity: 0.6;
+    cursor: not-allowed !important;      /* Changes cursor to a 'block' circle */
+    pointer-events: none !important;     /* Hard-blocks all mouse clicks and hovers */
+    box-shadow: none !important;
+    transform: none !important;
+  }
+</style>
+<div class="results-container"><a class="results-btn" href="https://uwo.eu.qualtrics.com/jfe/form/SV_6VZjkaaBlS7EaOO?ExternalDataReference=${e://Field/ExternalDataReference}" id="results-summary-btn">View Your Results (<span id="completed-percentage">0</span>% Complete) </a></div>

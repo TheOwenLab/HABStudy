@@ -1,0 +1,214 @@
+<style>
+  /* Base Desktop Styles */
+  .welcome-card {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 16, 28, 0.06);
+    border-top: 5px solid #4F2683;
+    text-align: left;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  /* Make the header act as the active clickable toggle bar */
+  .welcome-header {
+    color: #4F2683;
+    font-size: 22px;
+    font-weight: 700;
+    padding: 25px 30px 20px 30px;
+    cursor: pointer;
+    outline: none;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    letter-spacing: -0.3px;
+  }
+
+  /* Hide default browser bullet arrows on summary elements */
+  .welcome-header::-webkit-details-marker,
+  .welcome-header::marker {
+    display: none !important;
+  }
+
+  /* Elegant Western Orchid custom arrow indicator */
+  .toggle-chevron {
+    font-size: 14px;
+    color: #8F55E0;
+    transition: transform 0.25s ease;
+    transform: rotate(0deg);
+    padding-left: 15px;
+  }
+
+  /* Rotate the chevron instantly when the card is expanded */
+  .welcome-card[open] .toggle-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Interior container holding the scrollable content */
+  .welcome-content {
+    padding: 0 30px 25px 30px;
+    animation: fadeAccordionContent 0.4s ease;
+  }
+
+  @keyframes fadeAccordionContent {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .welcome-body {
+    color: #4a4a4a;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .instruction-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .step-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 14px;
+  }
+
+  .step-item:last-child {
+    margin-bottom: 0;
+  }
+
+  .step-number {
+    background: #8F55E0;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-text {
+    font-size: 14px;
+    color: #555555;
+    line-height: 1.5;
+    flex: 1 !important;
+  }
+
+  .step-text strong {
+    color: #222222;
+  }
+
+  /* NEW STYLE: Clean, low-contrast helper footer */
+  .welcome-footer {
+    font-size: 11px;
+    color: #8c8a90;
+    text-align: right;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(20, 16, 28, 0.06);
+    font-style: italic;
+    user-select: none;
+  }
+
+  /* ==========================================================================
+     MOBILE RESPONSIVE COMPACT MEDIA QUERIES
+     ========================================================================== */
+  @media (max-width: 650px) {
+    .welcome-card {
+      margin: 0 12px 25px 12px;
+      border-radius: 10px;
+    }
+
+    .welcome-header {
+      font-size: 18px;
+      padding: 16px 14px;
+    }
+
+    .welcome-content {
+      padding: 0 14px 16px 14px;
+    }
+
+    .step-item {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+    }
+
+    .welcome-body {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .step-number {
+      margin-right: 12px !important;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      flex-shrink: 0 !important;
+    }
+
+    .step-text {
+      font-size: 13.5px;
+      flex: 1 !important;
+      display: block !important;
+    }
+
+    .welcome-footer {
+      text-align: center; /* Centers alignment on mobile screens for better visual balance */
+      margin-top: 16px;
+    }
+  }
+</style>
+<div></div>
+<details open class="welcome-card">
+  <summary class="welcome-header">
+    <span>Welcome to the Healthy Aging Brain Study</span>
+    <span class="toggle-chevron">▼</span>
+  </summary>
+
+  <div class="welcome-content">
+    <div class="welcome-body">
+      Thank you for taking part! This interactive dashboard tracks your progress across 9 study components. You can complete these modules in any order you like, and your progress is saved automatically.
+    </div>
+
+    <ul class="instruction-steps">
+      <li class="step-item">
+        <div class="step-number">1</div>
+        <div class="step-text">
+          <strong>Explore Modules:</strong> Move your mouse over the different areas of the brain graphic below to view descriptions and estimated completion times.
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">2</div>
+        <div class="step-text">
+          <strong>Begin an Activity:</strong> Click on any illuminated brain piece to launch that specific module. Grayed-out modules are waiting to be started, while fully bright modules are complete.
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-number">3</div>
+        <div class="step-text">
+          <strong>Review Your Data:</strong> After finishing your first module, the <em>"View Results"</em> button at the bottom will unlock, allowing you to view your personalized summary performance metrics.
+        </div>
+      </li>
+    </ul>
+
+    <div class="welcome-footer">
+      💡 Tip: Click the banner title above at any time to minimize these instructions.
+    </div>
+  </div>
+</details>
