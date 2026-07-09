@@ -1,0 +1,183 @@
+<style type="text/css">/* Base Desktop Privacy Card Framework */
+  .privacy-card {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 16, 28, 0.05);
+    border-top: 5px solid #D97706; /* Warning Amber Anchor Line */
+    text-align: left;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  /* Privacy Active Click Toggle Header Bar */
+  .privacy-header {
+    color: #B45309; /* Dark Amber Text for high readability contrast */
+    font-size: 16px;
+    font-weight: 700;
+    padding: 20px 25px;
+    cursor: pointer;
+    outline: none;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    background: #FFFBEB; /* Soft warm alert background tint */
+  }
+
+  /* Remove browser default details marker arrows */
+  .privacy-header::-webkit-details-marker,
+  .privacy-header::marker {
+    display: none !important;
+  }
+
+  /* Custom Amber Indicator Arrow */
+  .privacy-chevron {
+    font-size: 12px;
+    color: #D97706;
+    transition: transform 0.25s ease;
+    transform: rotate(0deg);
+    padding-left: 15px;
+  }
+
+  /* Rotate indicator arrow when card opens */
+  .privacy-card[open] .privacy-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Inside content block wrapper */
+  .privacy-content {
+    padding: 20px 25px;
+    background: #ffffff;
+    animation: fadePrivacyContent 0.35s ease;
+  }
+
+  @keyframes fadePrivacyContent {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .privacy-body {
+    color: #4a4a4a;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .privacy-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+
+  .privacy-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 10px;
+  }
+
+  .privacy-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Red X marker style rules */
+  .privacy-bullet {
+    color: #DC2626; /* Warning Crimson */
+    font-size: 14px;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+
+  .privacy-text {
+    font-size: 13.5px;
+    color: #555555;
+    line-height: 1.5;
+    flex: 1 !important;
+  }
+
+  .privacy-text strong {
+    color: #222222;
+  }
+
+  /* Minimalist Footer Hint Row */
+  .privacy-footer {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: right;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(217, 119, 6, 0.15);
+    font-style: italic;
+    user-select: none;
+  }
+
+  /* ==========================================================================
+     MOBILE DISPLAY MEDIA QUERIES
+     ========================================================================== */
+  @media (max-width: 650px) {
+    .privacy-card {
+      margin: 0 12px 20px 12px;
+      border-radius: 10px;
+    }
+
+    .privacy-header {
+      font-size: 14.5px;
+      padding: 14px 16px;
+    }
+
+    .privacy-content {
+      padding: 16px 14px;
+    }
+
+    .privacy-item {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+    }
+
+    .privacy-body {
+      font-size: 13.5px;
+    }
+
+    .privacy-text {
+      font-size: 13px;
+      flex: 1 !important;
+      display: block !important;
+    }
+
+    .privacy-footer {
+      text-align: center;
+    }
+  }
+</style>
+<details class="privacy-card" open=""><summary class="privacy-header"> <span>🔒 Privacy &amp; Anonymity</span> <span class="privacy-chevron">▼</span> </summary>
+<div class="privacy-content">
+<div class="privacy-body">To ensure your research data remains entirely anonymous, <strong>please do not include any personally identifying details in your open-text entries.</strong> Your responses will be scrubbed for anything that appears like identifying information by our team of scientists, and anything you write will be kept separate from your contact profile. Regardless, please follow these guidelines:</div>
+
+<ul class="privacy-list">
+	<li class="privacy-item">
+	<div class="privacy-bullet">✕</div>
+
+	<div class="privacy-text"><strong>Direct Identifiers:</strong> Do not write your name, email address, phone number, or the names of family members or clinicians.</div>
+	</li>
+	<li class="privacy-item">
+	<div class="privacy-bullet">✕</div>
+
+	<div class="privacy-text"><strong>Specific Locations:</strong> Avoid using your exact home address, specific neighborhood names, or regional postal codes.</div>
+	</li>
+	<li class="privacy-item">
+	<div class="privacy-bullet">✕</div>
+
+	<div class="privacy-text"><strong>Named Institutions:</strong> Do not explicitly name companies, specific clinics, or hospitals. Instead, use generic descriptions (e.g., write <em>"my employer"</em> or <em>"the local clinic"</em>).</div>
+	</li>
+</ul>
+
+<div class="privacy-footer">💡 Click the banner title above at any time to collapse these privacy instructions.</div>
+</div>
+</details>

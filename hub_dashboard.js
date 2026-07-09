@@ -9,15 +9,60 @@ Qualtrics.SurveyEngine.addOnReady(function() {
 	document.body.appendChild(tooltip);
 
     var domainInfo = {
-        'Module1': { title: 'Healthy Aging', desc: '2 tasks + 2 questionnaires <br> This is a test of a description <br> How does this look', duration: "10 minutes" },
-        'Module2': { title: 'Everyday Memory', desc: '2 tasks + 1 questionnaire', duration: "10 minutes" },
-        'Module3': { title: 'Planning & Strategy', desc: '2 tasks + 2 questionnaires', duration: "10 minutes" },
-        'Module4': { title: 'Attention', desc: '1 task', duration: "6 minutes"  },
-        'Module5': { title: 'Verbal Ability', desc: '2 tasks + 1 questionnaire', duration: "10 minutes" },
-        'Module6': { title: 'Reasoning Puzzles', desc: '2 tasks', duration: "5 minutes" },
-        'Module7': { title: 'Spatial Abilities', desc: '2 tasks', duration: "5 minutes" },
-        'Module8': { title: 'Lifestyle', desc: '1 questionnaire', duration: "10 minutes" },
-        'Module9': { title: 'Additional Information', desc: 'Open ended questionnaire', duration: "5 minutes" },
+        'Module1': {
+            title: 'Healthy Aging',
+            desc: '2 tasks + 2 questionnaires',
+            duration: "10 minutes",
+            flavour: "What really is “normal” cognitive aging? At what point should you be concerned about conditions like dementia, Alzheimer’s disease, or mild cognitive impairment? These games test your attentional processing and working memory abilities – functions that are known to be affected with age."
+        },
+        'Module2': {
+            title: 'Everyday Memory',
+            desc: '2 tasks + 1 questionnaire',
+            duration: "10 minutes",
+            flavour: "Most of us experience dozens of cognitive lapses every week, and we often blame our memory. These games test short-term and episodic memory, which are important functions for when you’d like to do things like remember which cupboard you put your groceries in, or recall a friend’s phone number."
+        },
+        'Module3': {
+            title: 'Planning & Strategy',
+            desc: '2 tasks + 2 questionnaires',
+            duration: "10 minutes",
+            flavour: "This module tests planning ability – a fundamental property of executive function requiring forethought and sequence behaviour to reach specific goals. We will also ask questions about your mental health, an important component of a healthy brain."
+        },
+        'Module4': {
+            title: 'Attention',
+            desc: '1 task',
+            duration: "6 minutes",
+            flavour: "One of the strongest predictors of ADHD is how effectively you can inhibit an automatic response when your attention is being pulled in the wrong direction. This test was designed to evaluate your sustained focus and attentional control ability, which often lies at the heart of ADHD."
+        },
+        'Module5': {
+            title: 'Verbal Ability',
+            desc: '2 tasks + 1 questionnaire',
+            duration: "10 minutes",
+            flavour: "After a concussion or traumatic brain injury, the very mental skills we rely on to notice that something is wrong — attention, self-awareness, planning, and judgement — can be among the first things affected. These games test response inhibition and verbal reasoning, which are executive functions that have shown to be affected among those who have sustained a concussion."
+        },
+        'Module6': {
+            title: 'Reasoning Puzzles',
+            desc: '2 tasks',
+            duration: "5 minutes",
+            flavour: "Every day, your brain relies on logic to solve complex problems, whether you're navigating a tough conversation or organizing a packed schedule. These games challenge your deductive reasoning and mental rotation skills, testing your ability to connect pieces of information and manipulate objects in your mind's eye."
+        },
+        'Module7': {
+            title: 'Spatial Abilities',
+            desc: '2 tasks',
+            duration: "5 minutes",
+            flavour: "From navigating a new city to simply reaching out to grab your morning coffee, your brain is constantly mapping the world around you. These games test your visuospatial processing and spatial memory functions, tracking how your mind perceives physical layouts and remembers where things are in space."
+        },
+        'Module8': {
+            title: 'Lifestyle',
+            desc: '1 questionnaire',
+            duration: "10 minutes",
+            flavour: "Research examining the relationship between lifestyle choices and executive function as we age has showed us that exercise helps, good sleep helps, staying mentally engaged helps, and maintaining strong social connections helps. This module asks questions about your lifestyle habits, and will give a report of your baseline trends."
+        },
+        'Module9': {
+            title: 'Additional Information',
+            desc: 'Open ended questionnaire',
+            duration: "5 minutes",
+            flavour: "Is there anything else you’d like to tell us about your cognitive health? This module allows you to tell us more about your lifestyle, daily habits, and background—the 'extra stuff' that helps us understand how your real-world environment influences your cognitive data."
+        },
     };
 
     var statuses = {
@@ -35,18 +80,6 @@ Qualtrics.SurveyEngine.addOnReady(function() {
     for (const [key, value] of Object.entries(statuses)) {
         Qualtrics.SurveyEngine.setEmbeddedData(key+"_status", value);
     }
-
-    var surveyLinks = {
-        'Module1': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=1",
-        'Module2': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=2",
-        'Module3': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=3",
-        'Module4': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=4",
-        'Module5': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=5",
-        'Module6': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=6",
-        'Module7': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=7",
-        'Module8': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=8",
-        'Module9': "https://uwo.eu.qualtrics.com/jfe/form/SV_1G3c9CBfHFh1vkG?ExternalDataReference=${e://Field/ExternalDataReference}&module=9"
-    };
 
     fetch(brainUrl)
         .then(response => response.text())
@@ -82,14 +115,12 @@ Qualtrics.SurveyEngine.addOnReady(function() {
                         document.body.appendChild(loadingOverlay);
 
                         var cleanId = this.id.trim();
-                        var targetUrl = surveyLinks[cleanId];
                         var moduleId = cleanId.replace("Module", "");
 
                         // Set Backend variables
                         Qualtrics.SurveyEngine.setEmbeddedData(cleanId+"_status", "inprogress");
                         Qualtrics.SurveyEngine.setEmbeddedData(cleanId+"_redirect", null);
                         Qualtrics.SurveyEngine.setEmbeddedData("module_selected", moduleId);
-                        Qualtrics.SurveyEngine.setEmbeddedData("RedirectURL", targetUrl);
 
                         qthis.clickNextButton();
                     });
@@ -113,7 +144,9 @@ Qualtrics.SurveyEngine.addOnReady(function() {
                                 '<span class="status-pill status-' + rawStatus + '">' + formattedStatus + '</span>' +
                                 '<span class="tooltip-duration">⏱ ' + info.duration + '</span>' +
                             '</div>' +
-                            '<div class="tooltip-desc">' + info.desc + '</div>';
+                            '<div class="tooltip-desc">' + info.desc + '</div>' +
+                            /* NEW ROW ELEMENT INJECTION */
+                            '<div class="tooltip-flavour">' + info.flavour + '</div>';
 
                         tooltip.innerHTML = htmlContent;
                         tooltip.style.opacity = "1";

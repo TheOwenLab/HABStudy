@@ -1,0 +1,199 @@
+<style type="text/css">/* Base Desktop Dictation Card Framework */
+  .voice-card {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 16, 28, 0.05);
+    border-top: 5px solid #4F2683;
+    text-align: left;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  /* Active Click Toggle Header Bar */
+  .voice-header {
+    color: #4F2683;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 20px 25px;
+    cursor: pointer;
+    outline: none;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  .voice-header::-webkit-details-marker,
+  .voice-header::marker {
+    display: none !important;
+  }
+
+  .voice-chevron {
+    font-size: 12px;
+    color: #8F55E0;
+    transition: transform 0.25s ease;
+    transform: rotate(0deg);
+    padding-left: 15px;
+  }
+
+  .voice-card[open] .voice-chevron {
+    transform: rotate(180deg);
+  }
+
+  .voice-content {
+    padding: 0 25px 20px 25px;
+    background: #ffffff;
+    animation: fadeVoiceContent 0.35s ease;
+  }
+
+  @keyframes fadeVoiceContent {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .voice-body {
+    color: #4a4a4a;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .os-grid {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .os-column {
+    flex: 1;
+    background: #faf9fc;
+    border: 1px solid #e9e5ee;
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  /* HARDENED: Forced uppercase section title downsizing */
+  .voice-card .os-title {
+    font-weight: 700 !important;
+    font-size: 12px !important;
+    color: #4F2683 !important;
+    margin-bottom: 8px !important;
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  /* HARDENED: Forced micro keyboard shortcut key scale down */
+  .voice-card .kbd-badge {
+    background: #ffffff !important;
+    border: 1px solid #bfa3e8 !important;
+    border-bottom: 2px solid #8F55E0 !important;
+    border-radius: 4px !important;
+    padding: 1px 4px !important;
+    font-family: inherit !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    color: #222222 !important;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05) !important;
+    white-space: nowrap !important;
+  }
+
+  /* HARDENED: Explicitly broke down the target selectors to bypass Qualtrics framework lists */
+  .voice-card .voice-steps,
+  .voice-card .voice-steps li,
+  .voice-card .voice-steps li span {
+    color: #555555 !important;
+    font-size: 11.5px !important; /* Clean, tight, secondary text footprint */
+    line-height: 1.45 !important;
+    font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  }
+
+  .voice-card .voice-steps {
+    margin: 0 !important;
+    padding-left: 16px !important;
+  }
+
+  .voice-card .voice-steps li {
+    margin-bottom: 6px !important;
+  }
+
+  .voice-card .voice-steps li:last-child {
+    margin-bottom: 0 !important;
+  }
+
+  .voice-footer {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: right;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(79, 38, 131, 0.15);
+    font-style: italic;
+    user-select: none;
+    margin-top: 12px;
+  }
+
+  /* ==========================================================================
+     MOBILE DISPLAY MEDIA QUERIES
+     ========================================================================== */
+  @media (max-width: 650px) {
+    .voice-card {
+      margin: 0 12px 20px 12px;
+      border-radius: 10px;
+    }
+
+    .voice-header {
+      font-size: 14.5px;
+      padding: 16px 14px;
+    }
+
+    .voice-content {
+      padding: 0 14px 16px 14px;
+    }
+
+    .os-grid {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .os-column {
+      padding: 12px;
+    }
+  }
+</style>
+<details class="voice-card"><summary class="voice-header"> <span>🎙️ Optional: Talk Instead of Type</span> <span class="voice-chevron">▼</span> </summary>
+<div class="voice-content">
+<div class="voice-body">If you prefer not to type out long answers, you can use your computer's built-in voice-to-text tool to talk directly into the text boxes below. This is entirely optional and free.</div>
+
+<div class="os-grid">
+<div class="os-column">
+<div class="os-title">🪟 Windows</div>
+
+<ol class="voice-steps">
+	<li>Click inside any text answer box below.</li>
+	<li>Hold the <span class="kbd-badge">Windows Logo ⊞ Key</span>, then tap the <span class="kbd-badge">H</span> key.</li>
+	<li>When the microphone widget appears, start speaking naturally.</li>
+</ol>
+</div>
+
+<div class="os-column">
+<div class="os-title">🍏 Apple Mac</div>
+
+<ol class="voice-steps">
+	<li>Click inside any text answer box below.</li>
+	<li>Press the <span class="kbd-badge">Microphone 🎤 Key (F5)</span> on your top row.</li>
+	<li>Or, double-press the <span class="kbd-badge">Globe 🌐 / Fn Key</span> in the bottom-left corner.</li>
+	<li>Speak naturally to fill out the box.</li>
+</ol>
+</div>
+</div>
+
+<div class="voice-footer">💡 Remember to say your punctuation marks out loud (for example: say "period" or "comma" to format sentences).</div>
+</div>
+</details>

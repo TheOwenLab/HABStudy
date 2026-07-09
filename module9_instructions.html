@@ -1,0 +1,193 @@
+<style type="text/css">/* Base Desktop Instructions Card Framework */
+  .mod9-card {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 0 auto 25px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 16, 28, 0.05);
+    border-top: 5px solid #4F2683; /* Western Purple Top Anchor */
+    text-align: left;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  /* Active Click Toggle Header Bar */
+  .mod9-header {
+    color: #4F2683; /* Western Purple */
+    font-size: 16px;
+    font-weight: 700;
+    padding: 20px 25px;
+    cursor: pointer;
+    outline: none;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+  }
+
+  /* Remove browser default details marker arrows */
+  .mod9-header::-webkit-details-marker,
+  .mod9-header::marker {
+    display: none !important;
+  }
+
+  /* Custom Purple Indicator Arrow */
+  .mod9-chevron {
+    font-size: 12px;
+    color: #8F55E0; /* Western Orchid */
+    transition: transform 0.25s ease;
+    transform: rotate(0deg);
+    padding-left: 15px;
+  }
+
+  /* Rotate indicator arrow when card opens */
+  .mod9-card[open] .mod9-chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Inside content block wrapper */
+  .mod9-content {
+    padding: 0 25px 20px 25px;
+    background: #ffffff;
+    animation: fadeMod9Content 0.35s ease;
+  }
+
+  @keyframes fadeMod9Content {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .mod9-body {
+    color: #4a4a4a;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .mod9-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+  }
+
+  .mod9-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 12px;
+  }
+
+  .mod9-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Micro-badges for step numbers using Western Orchid */
+  .mod9-number {
+    background: #8F55E0; /* Western Orchid */
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .mod9-text {
+    font-size: 13.5px;
+    color: #555555;
+    line-height: 1.5;
+    flex: 1 !important;
+  }
+
+  .mod9-text strong {
+    color: #222222;
+  }
+
+  /* Minimalist Footer Hint Row */
+  .mod9-footer {
+    font-size: 11px;
+    color: #9ca3af;
+    text-align: right;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(79, 38, 131, 0.15);
+    font-style: italic;
+    user-select: none;
+  }
+
+  /* ==========================================================================
+     MOBILE DISPLAY MEDIA QUERIES
+     ========================================================================== */
+  @media (max-width: 650px) {
+    .mod9-card {
+      margin: 0 12px 20px 12px;
+      border-radius: 10px;
+    }
+
+    .mod9-header {
+      font-size: 14.5px;
+      padding: 16px 14px;
+    }
+
+    .mod9-content {
+      padding: 0 14px 16px 14px;
+    }
+
+    .mod9-item {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: flex-start !important;
+    }
+
+    .mod9-body {
+      font-size: 13.5px;
+    }
+
+    .mod9-number {
+      margin-right: 12px !important;
+    }
+
+    .mod9-text {
+      font-size: 13px;
+      flex: 1 !important;
+      display: block !important;
+    }
+
+    .mod9-footer {
+      text-align: center;
+    }
+  }
+</style>
+<details class="mod9-card" open=""><summary class="mod9-header"> <span>Module 9: Additional Information</span> <span class="mod9-chevron">▼</span> </summary>
+<div class="mod9-content">
+<div class="mod9-body">The brain games you completed evaluate specific cognitive domains, but real-world data is heavily influenced by your environment, your device, and your daily habits. This optional module gives you an open canvas to share the context behind your scores.</div>
+
+<ul class="mod9-list">
+	<li class="mod9-item">
+	<div class="mod9-number">1</div>
+
+	<div class="mod9-text"><strong>Share What is Relevant:</strong> You do not need to write an essay for every field. Provide details only for the questions that apply to your experiences today or your general background.</div>
+	</li>
+	<li class="mod9-item">
+	<div class="mod9-number">2</div>
+
+	<div class="mod9-text"><strong>Feel Free to Skip:</strong> If a specific section does not apply to you (for example, if you had absolutely no environmental distractions), simply leave the text area blank.</div>
+	</li>
+	<li class="mod9-item">
+	<div class="mod9-number">3</div>
+
+	<div class="mod9-text"><strong>No Strict Formatting:</strong> Do not worry about spelling or perfect phrasing. Bullet points or rough sentences are perfect—our team of scientists read these manually to spot situational context!</div>
+	</li>
+</ul>
+
+<div class="mod9-footer">💡 Click the banner title above to minimize these instructions.</div>
+</div>
+</details>

@@ -1,0 +1,50 @@
+/* Style the actual native Qualtrics Essay text inputs */
+.Skin textarea,
+.Skin .InputText,
+.Skin text {
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+  font-size: 14px !important;
+  color: #333333 !important;
+  line-height: 1.6 !important;
+  padding: 14px !important;
+  border: 1px solid #d2cbdc !important;
+  border-radius: 8px !important;
+  background: #faf9fc !important;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.2s ease-in-out !important;
+  max-width: 700px !important;
+  width: 100% !important;
+}
+
+/* Add a beautiful Orchid focus ring when a user clicks inside a box */
+.Skin textarea:focus,
+.Skin .InputText:focus {
+  background: #ffffff !important;
+  border-color: #8F55E0 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(143, 85, 224, 0.15), inset 0 1px 2px rgba(0,0,0,0.05) !important;
+}
+
+/* Custom question container typography framework */
+.hub-field-card {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  text-align: left;
+  max-width: 700px;
+  margin-bottom: 8px;
+}
+
+.hub-field-title {
+  color: #4F2683; /* Western Purple */
+  font-size: 20px !important;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hub-field-desc {
+  color: #4a4a4a
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
