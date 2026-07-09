@@ -3,7 +3,8 @@ Qualtrics.SurveyEngine.addOnload(function() { });
 Qualtrics.SurveyEngine.addOnReady(function() {
     var qthis = this;
     var isProcessingClick = false;
-    var brainUrl = "https://raw.githubusercontent.com/TheOwenLab/booklaunch/f3317be42169cb2b56a617d2b6b8e3e7043569e8/images/SVG/9pc-b.svg";
+    // var brainUrl = "https://raw.githubusercontent.com/TheOwenLab/booklaunch/f3317be42169cb2b56a617d2b6b8e3e7043569e8/images/SVG/9pc-b.svg";
+    var brainUrl = "https://cdn.jsdelivr.net/gh/TheOwenLab/booklaunch@main/images/SVG/9pc-b.svg";
     var targetDiv = document.getElementById('brain-placeholder');
     var tooltip = document.getElementById('brain-tooltip');
 	document.body.appendChild(tooltip);

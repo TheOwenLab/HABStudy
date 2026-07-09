@@ -1,0 +1,152 @@
+
+<style type="text/css">
+  /* Base Desktop Styles */
+  .welcome-card {
+    background: #ffffff;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 16, 28, 0.06);
+    border-top: 5px solid #4F2683; /* Western Purple */
+    text-align: left;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+  }
+
+  .welcome-header {
+    color: #4F2683;
+    font-size: 25px; /* Increased from 22px */
+    font-weight: 700;
+    padding: 25px 30px 20px 30px;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -0.3px;
+  }
+
+  /* Interior container holding content */
+  .welcome-content {
+    padding: 0 30px 25px 30px;
+  }
+
+  .welcome-body {
+    color: #222222;
+    font-size: 18px; /* Increased from 16px */
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .instruction-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .step-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 16px; /* Slightly increased for better whitespace */
+  }
+
+  .step-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Elegant Purple Bullet Points instead of numbers */
+  .step-bullet {
+    background: #8F55E0; /* Western Orchid Accent */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 14px;
+    margin-top: 8px; /* Re-centered to match the larger text line height */
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    flex: 1 !important;
+  }
+
+  .step-text strong {
+    color: #222222;
+  }
+
+  /* ==========================================================================
+     MOBILE RESPONSIVE COMPACT MEDIA QUERIES
+     ========================================================================== */
+  @media (max-width: 650px) {
+    .welcome-card {
+      margin: 0 12px 25px 12px;
+      border-radius: 10px;
+    }
+
+    .welcome-header {
+      font-size: 21px; /* Increased from 18px */
+      padding: 18px 16px;
+    }
+
+    .welcome-content {
+      padding: 0 16px 18px 16px;
+    }
+
+    .welcome-body {
+      font-size: 16.5px; /* Increased from 15px */
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .step-bullet {
+      margin-right: 12px !important;
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+    }
+
+    .step-text {
+      font-size: 15px; /* Increased from 13.5px */
+    }
+  }
+</style>
+
+<div class="welcome-card">
+<div class="welcome-header"><span>Welcome to the Healthy Aging Brain Study</span></div>
+
+<div class="welcome-content">
+<div class="welcome-body">Thank you for taking the time to help us with our research!</div>
+
+<ul class="instruction-steps">
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">First, you have to answer some questions about yourself.</div>
+	</li>
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">All the questions on this page require answers. It’s OK if you do not wish to answer any of them, but <strong>you will not be able to proceed with the study.</strong></div>
+	</li>
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">All other (upcoming) parts of the study are entirely optional.</div>
+	</li>
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text"><strong>Mobile Warning:</strong> If you are on a mobile phone, please re-open the study link using a laptop or desktop computer.</div>
+	</li>
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">If you do not finish this part of the study in one sitting, you can come back and continue where you left off by using the same link in your email.</div>
+	</li>
+</ul>
+</div>
+</div>

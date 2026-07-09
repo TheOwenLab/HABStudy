@@ -1,0 +1,163 @@
+<style type="text/css">/* ==========================================
+     1. MAIN CODE WRAPPER (Aligned to Checkboxes)
+     ========================================== */
+  .welcome-card {
+    background: #ffffff;
+    max-width: 680px !important; /* Precise clamp to match checkbox width exactly */
+    width: 100% !important;
+    margin-left: 0 !important;   /* Anchors flush left under the university logo */
+    margin-right: auto !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(20, 16, 28, 0.06);
+    border-top: 5px solid #4F2683; /* Western Purple */
+    text-align: left;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-sizing: border-box;
+    display: block;
+    overflow: hidden;
+  }
+
+  /* ==========================================
+     2. QUALTRICS LAYOUT SYNCHRONIZATION
+     ========================================== */
+  /* Ensures question stems and choice checkboxes use the identical alignment grid */
+  .simple-layout .question-container,
+  .simple-layout .question-content,
+  .simple-layout .question-text,
+  .simple-layout .choice-list,
+  .simple-layout .main-content {
+    max-width: 680px !important;
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+  }
+
+  /* ==========================================
+     3. INTERNAL TYPOGRAPHY & SPACING
+     ========================================== */
+  .welcome-header {
+    color: #4F2683;
+    font-size: 25px;
+    font-weight: 700;
+    padding: 25px 30px 20px 30px;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    letter-spacing: -0.3px;
+  }
+
+  .welcome-content {
+    padding: 0 30px 25px 30px;
+  }
+
+  .welcome-body {
+    color: #222222;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+    margin-bottom: 22px;
+  }
+
+  .instruction-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .step-item {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    margin-bottom: 16px;
+  }
+
+  .step-item:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Elegant Purple Bullet Points instead of numbers */
+  .step-bullet {
+    background: #8F55E0; /* Western Orchid Accent */
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 14px;
+    margin-top: 8px; /* Centered to match the 18px line height */
+    flex-shrink: 0;
+  }
+
+  .step-text {
+    font-size: 16px;
+    color: #555555;
+    line-height: 1.5;
+    flex: 1 !important;
+  }
+
+  .step-text strong {
+    color: #222222;
+  }
+
+  /* ==========================================================================
+     4. MOBILE RESPONSIVE ADAPTATIONS
+     ========================================================================== */
+  @media (max-width: 650px) {
+    .welcome-card {
+      margin: 0 12px 25px 12px !important;
+      border-radius: 10px;
+    }
+
+    .welcome-header {
+      font-size: 21px;
+      padding: 18px 16px;
+    }
+
+    .welcome-content {
+      padding: 0 16px 18px 16px;
+    }
+
+    .welcome-body {
+      font-size: 16.5px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .step-bullet {
+      margin-right: 12px !important;
+      width: 7px;
+      height: 7px;
+      margin-top: 8px;
+    }
+
+    .step-text {
+      font-size: 15px;
+    }
+  }
+</style>
+<div class="welcome-card">
+<div class="welcome-header"><span>HAB Study: Health Information</span></div>
+
+<div class="welcome-content">
+<div class="welcome-body">Thank you for taking the time to help us with our research!</div>
+
+<ul class="instruction-steps">
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">The following questions will help us collect some more detailed information about your health.</div>
+	</li>
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">These details are essential as they allow us to contextualize your cognitive performance and understand how different health factors are associated with cognitive functioning.</div>
+	</li>
+	<li class="step-item">
+	<div class="step-bullet">&nbsp;</div>
+
+	<div class="step-text">All questions in here are completely <strong>optional</strong>, and any answers you provide will remain completely anonymous.</div>
+	</li>
+</ul>
+</div>
+</div>
