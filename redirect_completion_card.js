@@ -27,8 +27,8 @@ Qualtrics.SurveyEngine.addOnReady(function() {
             desc: "Thank you for your concentration. Don't worry, it only felt (way) longer than it actually took! Your focusing thresholds and reaction times are now synced. The research crew is deeply impressed by your focus, especially since three of us got distracted by that bird ... oh pretty, it's a blue jay!"
         },
         '5': {
-            title: 'Verbal Ability Comprehended!',
-            desc: "Your language comprehension and reasoning inputs have been parsed. The linguistics team is currently analyzing your responses, and we are just pleased to see a collection of words that won’t be scrutinized by peer reviewers."
+            title: 'Response Inhibition Inhibited!',
+            desc: "Your data on impulse control and automatic responses has been successfully logged. Our research team is impressed, as we are currently failing a response inhibition task of our own involving a box of maple doughnuts in the breakroom."
         },
         '6': {
             title: 'Reasoning Puzzles Resolved!',

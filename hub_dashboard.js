@@ -3,18 +3,46 @@ Qualtrics.SurveyEngine.addOnload(function() { });
 Qualtrics.SurveyEngine.addOnReady(function() {
     var qthis = this;
     var isProcessingClick = false;
-    // var brainUrl = "https://raw.githubusercontent.com/TheOwenLab/booklaunch/f3317be42169cb2b56a617d2b6b8e3e7043569e8/images/SVG/9pc-b.svg";
+    var activeTouchId = null; // Tracks which module tooltip is active on touch screens
+
     var brainUrl = "https://cdn.jsdelivr.net/gh/TheOwenLab/booklaunch@main/images/SVG/9pc-b.svg";
     var targetDiv = document.getElementById('brain-placeholder');
     var tooltip = document.getElementById('brain-tooltip');
-	document.body.appendChild(tooltip);
+
+	var pulseStyle = document.createElement('style');
+	pulseStyle.type = 'text/css';
+	pulseStyle.innerHTML =
+		'@keyframes subtlePulse {' +
+		'    0% { filter: grayscale(100%) brightness(1.2); opacity: 0.35; }' +
+		'    50% { filter: grayscale(0%) brightness(0.95); opacity: 0.85; }' +
+		'    100% { filter: grayscale(100%) brightness(1.2); opacity: 0.35; }' +
+		'}' +
+		/* Neutralize baseline filters on any element tagged with the pulse class */
+		'.priority-pulse:not(.piece-complete) {' +
+		'    filter: none !important;' +
+		'    opacity: 1 !important;' +
+		'}' +
+		/* Run the breathing cycle on inner vector shapes dynamically */
+		'.priority-pulse:not(.piece-complete) path, ' +
+		'.priority-pulse:not(.piece-complete) polygon, ' +
+		'.priority-pulse:not(.piece-complete) rect, ' +
+		'.priority-pulse:not(.piece-complete) circle, ' +
+		'.priority-pulse:not(.piece-complete) * {' +
+		'    animation: subtlePulse 3.5s infinite ease-in-out !important;' +
+		'}';
+	document.head.appendChild(pulseStyle);
+
+
+    if (tooltip) {
+        document.body.appendChild(tooltip);
+    }
 
     var domainInfo = {
         'Module1': {
-            title: 'Healthy Aging',
+            title: '⭐ Healthy Aging (Core Module)',
             desc: '2 tasks + 2 questionnaires',
             duration: "10 minutes",
-            flavour: "What really is “normal” cognitive aging? At what point should you be concerned about conditions like dementia, Alzheimer’s disease, or mild cognitive impairment? These games test your attentional processing and working memory abilities – functions that are known to be affected with age."
+            flavour: "Important! What really is “normal” cognitive aging? At what point should you be concerned about conditions like dementia, Alzheimer’s disease, or mild cognitive impairment? These games test your attention and working memory abilities – functions that often decline with age."
         },
         'Module2': {
             title: 'Everyday Memory',
@@ -26,7 +54,7 @@ Qualtrics.SurveyEngine.addOnReady(function() {
             title: 'Planning & Strategy',
             desc: '2 tasks + 2 questionnaires',
             duration: "10 minutes",
-            flavour: "This module tests planning ability – a fundamental property of executive function requiring forethought and sequence behaviour to reach specific goals. We will also ask questions about your mental health, an important component of a healthy brain."
+            flavour: "This module tests planning ability – a fundamental property of executive function requiring forethought and sequencing behaviour to reach specific goals. We will also ask questions about your mental health, an important component of a healthy brain."
         },
         'Module4': {
             title: 'Attention',
@@ -35,7 +63,7 @@ Qualtrics.SurveyEngine.addOnReady(function() {
             flavour: "One of the strongest predictors of ADHD is how effectively you can inhibit an automatic response when your attention is being pulled in the wrong direction. This test was designed to evaluate your sustained focus and attentional control ability, which often lies at the heart of ADHD."
         },
         'Module5': {
-            title: 'Verbal Ability',
+            title: 'Response Inhibition',
             desc: '2 tasks + 1 questionnaire',
             duration: "10 minutes",
             flavour: "After a concussion or traumatic brain injury, the very mental skills we rely on to notice that something is wrong — attention, self-awareness, planning, and judgement — can be among the first things affected. These games test response inhibition and verbal reasoning, which are executive functions that have shown to be affected among those who have sustained a concussion."
@@ -53,10 +81,10 @@ Qualtrics.SurveyEngine.addOnReady(function() {
             flavour: "From navigating a new city to simply reaching out to grab your morning coffee, your brain is constantly mapping the world around you. These games test your visuospatial processing and spatial memory functions, tracking how your mind perceives physical layouts and remembers where things are in space."
         },
         'Module8': {
-            title: 'Lifestyle',
+            title: '⭐ Lifestyle (Core Module)',
             desc: '1 questionnaire',
             duration: "10 minutes",
-            flavour: "Research examining the relationship between lifestyle choices and executive function as we age has showed us that exercise helps, good sleep helps, staying mentally engaged helps, and maintaining strong social connections helps. This module asks questions about your lifestyle habits, and will give a report of your baseline trends."
+            flavour: "IMPORTANT! Research examining the relationship between lifestyle choices and executive function as we age has showed us that exercise helps, good sleep helps, staying mentally engaged helps, and maintaining strong social connections helps. This module asks questions about your lifestyle habits, and will give a report of your baseline trends."
         },
         'Module9': {
             title: 'Additional Information',
@@ -82,28 +110,88 @@ Qualtrics.SurveyEngine.addOnReady(function() {
         Qualtrics.SurveyEngine.setEmbeddedData(key+"_status", value);
     }
 
+    // Helper function to build the tooltip inner HTML
+    function populateTooltip(moduleId) {
+        let info = domainInfo[moduleId];
+        let rawStatus = (statuses[moduleId] || "notstarted").toLowerCase().trim();
+        var displayStatusMap = { 'notstarted': 'Not Started', 'inprogress': 'In Progress', 'complete': 'Complete' };
+        var formattedStatus = displayStatusMap[rawStatus] || rawStatus;
+
+        return '<div class="tooltip-title">' + info.title + '</div>' +
+               '<div class="tooltip-meta-row">' +
+                   '<span class="status-pill status-' + rawStatus + '">' + formattedStatus + '</span>' +
+                   '<span class="tooltip-duration">⏱ ' + info.duration + '</span>' +
+               '</div>' +
+               '<div class="tooltip-desc">' + info.desc + '</div>' +
+               '<div class="tooltip-flavour">' + info.flavour + '</div>';
+    }
+
     fetch(brainUrl)
-        .then(response => response.text())
+        .then(response => {
+            if (!response.ok) throw new Error("CDN Network Error");
+            return response.text();
+        })
         .then(svgCode => {
+            if (!targetDiv) return;
             targetDiv.innerHTML = svgCode;
 
             for (var id in domainInfo) {
                 var element = document.getElementById(id);
                 if (element) {
-                    var status = statuses[id].toLowerCase();
+                    var status = statuses[id].toLowerCase().trim();
+                    element.classList.remove('piece-complete', 'piece-progress', 'piece-notstarted');
                     element.classList.add(status === "complete" ? 'piece-complete' : (status === "inprogress" ? 'piece-progress' : 'piece-notstarted'));
                     element.style.cursor = "pointer";
 
-                    // 2. CONSOLIDATED SINGLE CLICK LISTENER
+					// Add pusling to priority pieces here. CW
+					if (id === 'Module8' || id === 'Module1') {
+						element.classList.add('priority-pulse');
+					}
+
+                    // ==========================================================================
+                    // SMART CLICK / TOUCH ROUTER
+                    // ==========================================================================
                     element.addEventListener('click', function(e) {
+                        var cleanId = this.id.trim();
+
+                        // Detect if device supports touch interactions
+                        var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
+                        if (isTouchDevice) {
+                            // If this module isn't active yet, intercept the click to show tooltip first
+                            if (activeTouchId !== cleanId) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                activeTouchId = cleanId;
+
+                                if (tooltip) {
+                                    tooltip.innerHTML = populateTooltip(cleanId);
+
+                                    // Position tooltip safely above the user's tapping finger so their hand doesn't block it
+                                    var x = e.clientX || e.pageX;
+                                    var y = e.clientY || e.pageY;
+
+                                    // Offset calculation to push tooltip above tap zone safely on narrow viewports
+                                    var screenWidth = window.innerWidth;
+                                    var tooltipX = x + 15;
+                                    if (tooltipX + 320 > screenWidth) {
+                                        tooltipX = screenWidth - 350; // Pin to edge if overflowing right boundary
+                                    }
+
+                                    tooltip.style.transform = 'translate(' + Math.max(10, tooltipX) + 'px, ' + (y - 130) + 'px)';
+                                    tooltip.style.opacity = "1";
+                                }
+                                return; // Stop execution right here
+                            }
+                        }
+
+                        // LAUNCH SEQUENCE (Runs instantly on desktop, or on the 2nd tap on tablet)
                         if (isProcessingClick) return;
                         isProcessingClick = true;
 
-                        // Lock down UI
                         targetDiv.style.pointerEvents = "none";
                         targetDiv.style.opacity = "0.6";
 
-                        // Fire Western Purple Curtain
                         var loadingOverlay = document.createElement('div');
                         loadingOverlay.id = 'study-loading-overlay';
                         loadingOverlay.innerHTML = `
@@ -115,10 +203,7 @@ Qualtrics.SurveyEngine.addOnReady(function() {
                         `;
                         document.body.appendChild(loadingOverlay);
 
-                        var cleanId = this.id.trim();
                         var moduleId = cleanId.replace("Module", "");
-
-                        // Set Backend variables
                         Qualtrics.SurveyEngine.setEmbeddedData(cleanId+"_status", "inprogress");
                         Qualtrics.SurveyEngine.setEmbeddedData(cleanId+"_redirect", null);
                         Qualtrics.SurveyEngine.setEmbeddedData("module_selected", moduleId);
@@ -126,45 +211,45 @@ Qualtrics.SurveyEngine.addOnReady(function() {
                         qthis.clickNextButton();
                     });
 
-                    // 3. CLEAN COMPONENT GENERATION ON HOVER
                     element.addEventListener('mouseenter', function(e) {
-                        let cleanId = this.id.trim();
-                        let info = domainInfo[cleanId];
-                        let rawStatus = (statuses[cleanId] || "notstarted").toLowerCase().trim();
+                        var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+                        if (isTouchDevice) return; // Prevent hover calculations from competing on tablets
 
-                        var displayStatusMap = {
-                            'notstarted': 'Not Started',
-                            'inprogress': 'In Progress',
-                            'complete': 'Complete'
-                        };
-                        var formattedStatus = displayStatusMap[rawStatus] || rawStatus;
-
-                        var htmlContent =
-                            '<div class="tooltip-title">' + info.title + '</div>' +
-                            '<div class="tooltip-meta-row">' +
-                                '<span class="status-pill status-' + rawStatus + '">' + formattedStatus + '</span>' +
-                                '<span class="tooltip-duration">⏱ ' + info.duration + '</span>' +
-                            '</div>' +
-                            '<div class="tooltip-desc">' + info.desc + '</div>' +
-                            /* NEW ROW ELEMENT INJECTION */
-                            '<div class="tooltip-flavour">' + info.flavour + '</div>';
-
-                        tooltip.innerHTML = htmlContent;
+                        if (!tooltip) return;
+                        tooltip.innerHTML = populateTooltip(this.id.trim());
                         tooltip.style.opacity = "1";
                     });
 
                     element.addEventListener('mousemove', function(e) {
+                        var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+                        if (isTouchDevice) return;
+
+                        if (!tooltip) return;
                         var x = e.clientX + 20;
-						var y = e.clientY + 20;
-						tooltip.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+                        var y = e.clientY + 20;
+                        tooltip.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
                     });
 
                     element.addEventListener('mouseleave', function() {
-                        tooltip.style.opacity = "0";
+                        var isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+                        if (isTouchDevice) return;
+
+                        if (tooltip) tooltip.style.opacity = "0";
                     });
                 }
             }
+        })
+        .catch(err => {
+            if (targetDiv) targetDiv.innerHTML = '<p style="color:#c0392b; padding-top:100px;">Dashboard interface sync error. Please refresh.</p>';
         });
+
+    // Global tap catcher: if a tablet user taps empty space outside the brain, dismiss the tooltip
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.brain-piece')) {
+            activeTouchId = null;
+            if (tooltip) tooltip.style.opacity = "0";
+        }
+    });
 
     this.hideNextButton();
 });
